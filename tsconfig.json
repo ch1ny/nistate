@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "declaration": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "target": "es2015",
+    "baseUrl": "./",
+    "moduleResolution": "bundler",
+    "paths": {
+      "@@/*": [".dumi/tmp/*"],
+      "nistate": ["src"],
+      "nistate/*": ["src/*", "*"],
+      "@/*": ["src/*", "*"]
+    }
+  },
+  "include": [".dumirc.ts", "src/**/*", "demos/**/*"]
+}
