@@ -1,4 +1,4 @@
-import { noop } from 'nistate/common';
+import { noop } from 'kira-utils';
 import { Flow } from 'nistate/flow';
 import hookers from 'nistate/hookers';
 import { useMemoizedFn } from 'nistate/hooks';

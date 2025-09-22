@@ -1,4 +1,4 @@
-import { shallowEqual } from 'nistate/common';
+import { shallowEqual } from 'kira-utils';
 import type { Flow, SubscriberProcessor } from 'nistate/flow';
 import { useMemoizedFn } from 'nistate/hooks';
 import { useEffect, useState } from 'react';

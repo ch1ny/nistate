@@ -1,6 +1,6 @@
 import { Button } from 'antd';
+import { shallowEqual } from 'kira-utils';
 import { Flow } from 'nistate';
-import { shallowEqual } from 'nistate/common';
 import React, { useEffect, useState } from 'react';
 
 export default function () {

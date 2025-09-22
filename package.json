@@ -74,6 +74,7 @@
   },
   "dependencies": {
     "immer": "^10.1.3",
+    "kira-utils": "^1.0.0",
     "metypes": "^1.0.0"
   },
   "devDependencies": {
