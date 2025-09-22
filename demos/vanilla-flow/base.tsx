@@ -1,5 +1,5 @@
 import { Button } from 'antd';
-import { Flow } from 'nistate/classes';
+import { Flow } from 'nistate';
 import { shallowEqual } from 'nistate/common';
 import React, { useEffect, useState } from 'react';
 
@@ -13,7 +13,7 @@ export default function () {
       }),
   );
   useEffect(() => {
-    flow.subscribe(
+    flow.watch(
       ({ count, base }) => count + base,
       (total) => {
         setTotal(total);
@@ -33,7 +33,7 @@ export default function () {
       <div>
         <Button
           onClick={() => {
-            flow.setState(({ count }) => ({ count: count + 1 }));
+            flow.update(({ count }) => ({ count: count + 1 }));
           }}
           type="primary"
         >

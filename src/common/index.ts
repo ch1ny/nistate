@@ -1,3 +1,2 @@
-export * from './debug';
-export * from './shadow';
-export * from './shallow-equal';
+export { default as noop } from './noop';
+export { default as shallowEqual } from './shallow-equal';

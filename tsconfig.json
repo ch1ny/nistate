@@ -11,8 +11,7 @@
     "paths": {
       "@@/*": [".dumi/tmp/*"],
       "nistate": ["src"],
-      "nistate/*": ["src/*", "*"],
-      "@/*": ["src/*", "*"]
+      "nistate/*": ["src/*", "*"]
     }
   },
   "include": [".dumirc.ts", "src/**/*", "demos/**/*"]

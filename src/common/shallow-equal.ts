@@ -1,5 +1,14 @@
-export function shallowEqual(objA: any, objB: any): boolean {
+/**
+ * 浅比较两个对象是否相等
+ * @param objA
+ * @param objB
+ * @param depth
+ * @returns
+ */
+function shallowEqual(objA: any, objB: any, depth = 0): boolean {
   if (Object.is(objA, objB)) return true;
+
+  if (objA === 0 && objB === 0) return true; // `Object.is(0, -0)` returns `false`
 
   if (
     typeof objA !== 'object' ||
@@ -13,8 +22,11 @@ export function shallowEqual(objA: any, objB: any): boolean {
   if (objA instanceof Map && objB instanceof Map) {
     if (objA.size !== objB.size) return false;
 
-    for (const [key, val] of objA) {
-      if (!objB.has(key) || objB.get(key) !== val) return false;
+    for (const [key, valA] of objA) {
+      if (!objB.has(key)) return false;
+      const valB = objB.get(key);
+      if (valA !== valB && (!depth || !shallowEqual(valA, valB, depth - 1)))
+        return false;
     }
   }
 
@@ -31,8 +43,20 @@ export function shallowEqual(objA: any, objB: any): boolean {
 
   if (keysA.length !== keysB.length) return false;
   for (const key of keysA) {
-    if (!Object.is(objA[key], objB[key])) return false;
+    if (
+      !Object.is(objA[key], objB[key]) &&
+      (!depth || !shallowEqual(objA[key], objB[key], depth - 1))
+    )
+      return false;
   }
 
   return true;
 }
+
+shallowEqual.bindDepth = (depth: number) => {
+  return function (objA: any, objB: any): boolean {
+    return shallowEqual(objA, objB, depth);
+  };
+};
+
+export default shallowEqual;
